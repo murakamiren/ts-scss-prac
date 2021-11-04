@@ -2,6 +2,7 @@
 var tomato = document.querySelector("#tomato");
 var skyblue = document.querySelector("#skyblue");
 var dropArea = document.querySelectorAll(".box-drag-container");
+var onlineStatus = document.querySelector("#status");
 var sock = new WebSocket("ws://127.0.0.1:5000");
 // const dragArea2 = document.querySelector<HTMLDivElement>(".dr-2");
 // const dropArea = document.querySelector<HTMLDivElement>("#drop-area");
@@ -10,6 +11,7 @@ var dragContent = [tomato, skyblue];
 // const objJson = JSON.stringify(obj);
 sock.addEventListener("open", function (e) {
     console.log("open");
+    onlineStatus.innerText = "currently: online!";
 });
 sock.addEventListener("message", function (e) {
     console.log("msg");
@@ -24,6 +26,7 @@ sock.addEventListener("message", function (e) {
 });
 sock.addEventListener("close", function (e) {
     console.log("close");
+    onlineStatus.innerText = "currently: offline";
 });
 sock.addEventListener("error", function (e) {
     console.log("err");

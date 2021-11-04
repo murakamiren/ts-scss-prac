@@ -2,6 +2,7 @@
 const tomato = document.querySelector<HTMLDivElement>("#tomato");
 const skyblue = document.querySelector<HTMLDivElement>("#skyblue");
 const dropArea = document.querySelectorAll<HTMLDivElement>(".box-drag-container");
+const onlineStatus = document.querySelector<HTMLParagraphElement>("#status");
 
 const sock: WebSocket = new WebSocket("ws://127.0.0.1:5000");
 // const dragArea2 = document.querySelector<HTMLDivElement>(".dr-2");
@@ -13,6 +14,7 @@ const dragContent = [tomato, skyblue];
 
 sock.addEventListener("open", (e: any) => {
 	console.log("open");
+	onlineStatus.innerText = "currently: online!";
 });
 
 sock.addEventListener("message", (e: any) => {
@@ -29,6 +31,7 @@ sock.addEventListener("message", (e: any) => {
 
 sock.addEventListener("close", (e: any) => {
 	console.log("close");
+	onlineStatus.innerText = "currently: offline";
 });
 
 sock.addEventListener("error", (e: any) => {

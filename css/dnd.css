@@ -3,6 +3,11 @@
   margin: 20px 0;
 }
 
+.status {
+  text-align: center;
+  margin: 20px;
+}
+
 .box-drag-container {
   width: 200px;
   height: 200px;
